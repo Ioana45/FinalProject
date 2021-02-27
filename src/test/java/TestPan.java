@@ -5,10 +5,12 @@ import org.junit.rules.Timeout;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
+import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
 public class TestPan {
@@ -18,7 +20,6 @@ public class TestPan {
     public static void main(String[] args) {
         System.setProperty("webdriver.chrome.driver", Utills.CHROME_DRIVER_LOCATION);
     }
-//Testing for the Main Page
 
     @Test(testName = "Select the men option")
     public static void theMenOption () {
@@ -36,6 +37,9 @@ public class TestPan {
         webForm.selectTheMenOption();
         Utills.WaitForElement(1);
         webForm.accessSportsArticles();
+        SecondPage secondPage = new SecondPage(driver);
+        Utills.WaitForElement(3);
+        Assert.assertEquals(secondPage.getHeaderProductPage(), "Sport");
     }
     @Test(testName = "Select after the color")
     public static void colorChoice () {
@@ -47,9 +51,11 @@ public class TestPan {
         Utills.WaitForElement(1);
         webForm.accessSportsArticles();
         Utills.WaitForElement(1);
-       // webForm.theOptionToChooseTheColor();
-       // webForm.selectTheWishColor();
+        SecondPage secondWebForm = new SecondPage(driver);
+        secondWebForm.theOptionToChooseTheColor();
+        secondWebForm.selectTheWishColor();
     }
+
     @Test(testName = "Switch button for sustainable")
     public static void selectTheSustainableChoice() {
         driver.get(Utills.BASE_URL);
@@ -60,9 +66,13 @@ public class TestPan {
         Utills.WaitForElement(1);
         webForm.accessSportsArticles();
         Utills.WaitForElement(1);
-        //webForm.theSustainableButton();
-        Utills.WaitForElement(1);
-       // webForm.removeTheAllfilters();
+        SecondPage secondWebForm = new SecondPage(driver);
+        secondWebForm.theSustainableButton();
+        Utills.WaitForElement(2);
+        ThirdPage thirdWebForm = new ThirdPage(driver);
+        Utills.WaitForElement(2);
+        thirdWebForm.removeTheAllFilters();
+
     }
     @Test(testName = "Choice of new products from the sorting option ")
     public static void theSortChoice() {
@@ -74,10 +84,13 @@ public class TestPan {
         Utills.WaitForElement(1);
         webForm.accessSportsArticles();
         Utills.WaitForElement(1);
-       // webForm.selectTheSortOption();
-      //  webForm.fromTheSortOptionSelectNewAdd();
+        SecondPage secondWebForm = new SecondPage(driver);
+        secondWebForm.selectTheSortOption();
+        Utills.WaitForElement(1);
+        secondWebForm.fromTheSortOptionSelectNewAdd();
 
     }
+
     @Test(testName = "Add a produs in the favorites list")
     public static void selectFavoriteProduct() {
         driver.get(Utills.BASE_URL);
@@ -88,13 +101,13 @@ public class TestPan {
         Utills.WaitForElement(1);
         webForm.accessSportsArticles();
         Utills.WaitForElement(2);
-      //  webForm.selectTheFavoritesOption();
-
+        SecondPage secondWebPage = new SecondPage(driver);
+        secondWebPage.productForFavorites();
+        Utills.WaitForElement(3);
+        ThirdPage thirdWebPage = new ThirdPage(driver);
+        thirdWebPage.theFavoriteProduct();
     }
 
-
-
-    //Testing for page search product
     @Test(testName = "Search a product")
     public static void searchForProduct (){
         driver.get(Utills.BASE_URL);
@@ -113,9 +126,12 @@ public class TestPan {
         webForm.searchItemUsingButton();
         Utills.WaitForElement(1);
         webForm.populateSearchField();
+        Utills.WaitForElement(1);
         webForm.searchItemUsingButton();
         Utills.WaitForElement(1);
-       //webForm.accessTheProduct();
+        SecondPage secondWebPage = new SecondPage(driver);
+        secondWebPage.accessTheProduct();
+
 
     }
 
@@ -129,9 +145,13 @@ public class TestPan {
         webForm.populateSearchField();
         webForm.searchItemUsingButton();
         Utills.WaitForElement(1);
-        //webForm.accessTheProduct();
-        Utills.WaitForElement(3);
-        webForm.addTheProductToTheCart();
+        SecondPage secondWebPage = new SecondPage(driver);
+        secondWebPage.accessTheProduct();
+        ThirdPage thirdWebPage = new ThirdPage(driver);
+        Utills.WaitForElement(2);
+        thirdWebPage.addTheProductToTheCart();
+
+
     }
 
     @Test(testName = "Go pay")
@@ -144,14 +164,16 @@ public class TestPan {
         webForm.populateSearchField();
         webForm.searchItemUsingButton();
         Utills.WaitForElement(1);
-        //webForm.accessTheProduct();
+        SecondPage secondWebPage = new SecondPage(driver);
+        secondWebPage.accessTheProduct();
         Utills.WaitForElement(3);
-        webForm.addTheProductToTheCart();
+        ThirdPage thirdWebPage = new ThirdPage(driver);
+        thirdWebPage.addTheProductToTheCart();
         Utills.WaitForElement(2);
-        webForm.accessThePathForPayment();
+        thirdWebPage.accessThePathForPayment();
+
     }
 
-    // Testing the login option
 
    @Test(testName = "Login test")
     public static void loginForPayment(){
@@ -165,21 +187,31 @@ public class TestPan {
         driver.get(Utills.BASE_URL);
         LoginPage webForm = new LoginPage(driver);
         webForm.selectTheLoginLabel();
-        //Utills.WaitForElement(1);
-        webForm.selectTheLoginOption();
+        Utills.WaitForElement(2);
+        SecondPage secondWebForm = new SecondPage(driver);
+        secondWebForm.selectTheLoginOption();
+    }
+    @Test(testName = "Login with email and password")
+    public static void loginWithEmailAndPassword(){
+        driver.get(Utills.BASE_URL);
+        LoginPage webForm = new LoginPage(driver);
+        webForm.selectTheLoginLabel();
+        Utills.WaitForElement(2);
+        SecondPage secondWebForm = new SecondPage(driver);
+        secondWebForm.selectTheLoginOption();
+        ThirdPage thirdWebForm = new ThirdPage(driver);
+        thirdWebForm.clickOnEmailField();
+        Utills.WaitForElement(1);
+        thirdWebForm.emailAddress();
+        Utills.WaitForElement(2);
+        thirdWebForm.clickOnPasswordField();
+        Utills.WaitForElement(1);
+        thirdWebForm.writeInThePasswordField();
+        Utills.WaitForElement(2);
+        thirdWebForm.passwordValidationButton();
+
     }
 
-    @Test(testName = "Select a product from list")
-    public static void selectProductFromList() {
-        driver.get(Utills.BASE_URL);
-        MainPage webForm = new MainPage(driver);
-        webForm.selectTheMenOption();
-        Utills.WaitForElement(3);
-        webForm.accessSportsArticles();
-        Utills.WaitForElement(3);
-        SecondPage secondWebForm = new SecondPage(driver);
-        secondWebForm.productForFavorites();
-    }
 
     @AfterSuite
     public static void cleanUP() {

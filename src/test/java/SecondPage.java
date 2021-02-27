@@ -18,15 +18,19 @@ public class SecondPage extends PageObject{
     @FindBy(xpath = "//*[@id=\"Sorting-item-3\"]/div")
     private WebElement newAdd;
     //Am ales optiunea de "Proaspat adaugate din elementul "Sorteaza"
-    @FindBy(xpath = "//*[@id=\"app\"]/section/section/div[2]/div[3]/div/div/button[2]")
-    private WebElement wipeTheFiltres;
-    //Optiunea de stergere filtre
     @FindBy(css = ".ReactVirtualized__Grid__innerScrollContainer div:first-child a:nth-child(1)")
     private WebElement ProductChoice;
     //Am selectat produsul dorit
     @FindBy(css = "#app .ReactVirtualized__Grid > div >div:first-of-type > a:first-of-type ")
     private WebElement product;
     //Din pagina de produse sport, am ales primul produs pentru adaugare la favorite
+    @FindBy(xpath = "//*[@id=\"app\"]/section/section/div[2]/div[1]/ul/li/a")
+    private WebElement productSearchHeader;
+    //Validare dupa cuvantul selectat "Sport" ca am ajuns pe pagina dorita
+    @FindBy(xpath = "//*[@id=\"modal-root\"]/div/div/div/div/div/div[2]/div/div/div[2]/div[2]/button")
+    private WebElement logareChoice;
+    //Am ales optiunea logare si nu inregistreaza-te
+
 
     public SecondPage(WebDriver driver) { super(driver);}
     public void theOptionToChooseTheColor() {this.theLabelForColor.click();}
@@ -34,11 +38,9 @@ public class SecondPage extends PageObject{
     public void theSustainableButton() {this.theSwitchforsustainable.click();}
     public void selectTheSortOption() {this.theSortOption.click();}
     public void fromTheSortOptionSelectNewAdd() {this.newAdd.click();}
-    public void removeTheAllFilters() {this.wipeTheFiltres.click();}
     public void accessTheProduct() {this.ProductChoice.click();}
-    public void productForFavorites() {
-        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", product);
-        this.product.click();
-    }
+    public void productForFavorites() {this.product.click();}
+    public void selectTheLoginOption() {this.logareChoice.click();}
+    public String getHeaderProductPage() {  return this.productSearchHeader.getText(); }
 
 }
