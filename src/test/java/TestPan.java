@@ -1,7 +1,4 @@
 import jdk.jshell.execution.Util;
-import org.apache.tools.ant.Main;
-import org.apache.tools.ant.taskdefs.Sleep;
-import org.junit.rules.Timeout;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -36,10 +33,11 @@ public class TestPan {
         Utills.WaitForElement(2);
         webForm.selectTheMenOption();
         Utills.WaitForElement(1);
-        webForm.accessSportsArticles();
-        SecondPage secondPage = new SecondPage(driver);
+        SecondPage secondWebForm = new SecondPage(driver);
+        secondWebForm.accessSportsArticles();
         Utills.WaitForElement(3);
-        Assert.assertEquals(secondPage.getHeaderProductPage(), "Sport");
+        ThirdPage thirdPage = new ThirdPage(driver);
+        Assert.assertEquals(thirdPage.getHeaderProductPage(), "Haine sport");
     }
     @Test(testName = "Select after the color")
     public static void colorChoice () {
@@ -49,11 +47,12 @@ public class TestPan {
         Utills.WaitForElement(2);
         webForm.selectTheMenOption();
         Utills.WaitForElement(1);
-        webForm.accessSportsArticles();
-        Utills.WaitForElement(1);
         SecondPage secondWebForm = new SecondPage(driver);
-        secondWebForm.theOptionToChooseTheColor();
-        secondWebForm.selectTheWishColor();
+        secondWebForm.accessSportsArticles();
+        Utills.WaitForElement(3);
+        ThirdPage thirdWebForm = new ThirdPage(driver);
+        thirdWebForm.theOptionToChooseTheColor();
+        thirdWebForm.selectTheWishColor();
     }
 
     @Test(testName = "Switch button for sustainable")
@@ -64,15 +63,11 @@ public class TestPan {
         Utills.WaitForElement(2);
         webForm.selectTheMenOption();
         Utills.WaitForElement(1);
-        webForm.accessSportsArticles();
-        Utills.WaitForElement(1);
         SecondPage secondWebForm = new SecondPage(driver);
-        secondWebForm.theSustainableButton();
-        Utills.WaitForElement(2);
+        secondWebForm.accessSportsArticles();
+        Utills.WaitForElement(3);
         ThirdPage thirdWebForm = new ThirdPage(driver);
-        Utills.WaitForElement(2);
-        thirdWebForm.removeTheAllFilters();
-
+        thirdWebForm.theSustainableButton();
     }
     @Test(testName = "Choice of new products from the sorting option ")
     public static void theSortChoice() {
@@ -82,12 +77,13 @@ public class TestPan {
         Utills.WaitForElement(2);
         webForm.selectTheMenOption();
         Utills.WaitForElement(1);
-        webForm.accessSportsArticles();
-        Utills.WaitForElement(1);
         SecondPage secondWebForm = new SecondPage(driver);
-        secondWebForm.selectTheSortOption();
+        secondWebForm.accessSportsArticles();
+        Utills.WaitForElement(3);
+        ThirdPage thirdWebForm = new ThirdPage(driver);
+        thirdWebForm.selectTheSortOption();
         Utills.WaitForElement(1);
-        secondWebForm.fromTheSortOptionSelectNewAdd();
+        thirdWebForm.fromTheSortOptionSelectNewAdd();
 
     }
 
@@ -99,21 +95,24 @@ public class TestPan {
         Utills.WaitForElement(2);
         webForm.selectTheMenOption();
         Utills.WaitForElement(1);
-        webForm.accessSportsArticles();
-        Utills.WaitForElement(2);
-        SecondPage secondWebPage = new SecondPage(driver);
-        secondWebPage.productForFavorites();
+        SecondPage secondWebForm = new SecondPage(driver);
+        secondWebForm.accessSportsArticles();
         Utills.WaitForElement(3);
         ThirdPage thirdWebPage = new ThirdPage(driver);
-        thirdWebPage.theFavoriteProduct();
+        thirdWebPage.productForFavorites();
+        Utills.WaitForElement(3);
+        FourthPage fourthdWebPage = new FourthPage(driver);
+        fourthdWebPage.theFavoriteProduct();
     }
 
     @Test(testName = "Search a product")
     public static void searchForProduct (){
         driver.get(Utills.BASE_URL);
         SearchPage webForm = new SearchPage(driver);
+        webForm.okForCookies();
+        Utills.WaitForElement(2);
         webForm.searchItemUsingButton();
-        Utills.WaitForElement(1);
+        Utills.WaitForElement(3);
         webForm.populateSearchField();
         webForm.searchItemUsingButton();
     }
@@ -123,8 +122,9 @@ public class TestPan {
         driver.get(Utills.BASE_URL);
         SearchPage webForm = new SearchPage(driver);
         webForm.okForCookies();
+        Utills.WaitForElement(3);
         webForm.searchItemUsingButton();
-        Utills.WaitForElement(1);
+        Utills.WaitForElement(2);
         webForm.populateSearchField();
         Utills.WaitForElement(1);
         webForm.searchItemUsingButton();
