@@ -6,7 +6,7 @@ public class ThirdPage extends PageObject{
     @FindBy(xpath = "//*[@id=\"app\"]/section/section[1]/section/div[2]/div/div/div/div[7]/div/button")
     private WebElement addToCart;
     //Adaugare produs in cos
-    @FindBy(xpath ="//*[@id=\"app\"]/section/div[4]/div[2]/div[2]/div/button")
+    @FindBy(xpath ="//*[@id=\"app\"]/section/div[3]/div[2]/div[2]/div[2]/button")
     private WebElement forPayment;
     //Click pe butonul pentru a plati "Catre casa"
     @FindBy(xpath = "//*[@id=\"modal-root\"]/div/div/div/div/div/div[2]/div/div[2]/div/form/div[1]/div[1]/label/input")

@@ -24,7 +24,7 @@ public class SearchPage extends PageObject {
 
 
     public SearchPage(WebDriver driver) { super(driver);}
-    void populateSearchField() {this.searchField.sendKeys(SEARCH_STRING);}
+    public void populateSearchField() {this.searchField.sendKeys(SEARCH_STRING);}
     public void searchOtherProduct() {this.searchSecondProduct.sendKeys(Search_Second_Product);}
     public void searchItemUsingButton() {this.searchButton.click();}
     public void okForCookies() {this.acceptCookies.click();}

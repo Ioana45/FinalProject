@@ -4,7 +4,7 @@ import org.openqa.selenium.support.FindBy;
 
 public class LoginPage extends PageObject {
 
-    @FindBy(xpath = "//*[@id=\"app\"]/section/div[2]/div/header/div/div[1]/div[2]/ul/li[2]")
+    @FindBy(xpath = "//*[@id=\"app\"]/section/div[1]/div/header/div/div[1]/div[2]/ul/li[2]")
     private WebElement loginLabel;
     //Click pe butonul de logare
     @FindBy(xpath = "//*[@id=\"onetrust-accept-btn-handler\"]")

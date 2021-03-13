@@ -163,13 +163,13 @@ public class TestPan {
         Utills.WaitForElement(1);
         webForm.populateSearchField();
         webForm.searchItemUsingButton();
-        Utills.WaitForElement(1);
+        Utills.WaitForElement(3);
         SecondPage secondWebPage = new SecondPage(driver);
         secondWebPage.accessTheProduct();
-        Utills.WaitForElement(3);
+        Utills.WaitForElement(2);
         ThirdPage thirdWebPage = new ThirdPage(driver);
         thirdWebPage.addTheProductToTheCart();
-        Utills.WaitForElement(2);
+        Utills.WaitForElement(3);
         thirdWebPage.accessThePathForPayment();
 
     }
@@ -179,6 +179,8 @@ public class TestPan {
     public static void loginForPayment(){
         driver.get(Utills.BASE_URL);
         LoginPage webForm = new LoginPage(driver);
+        webForm.acceptCookies();
+        Utills.WaitForElement(2);
         webForm.selectTheLoginLabel();
     }
 

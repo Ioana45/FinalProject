@@ -7,7 +7,7 @@ import javax.swing.*;
 
 public class MainPage extends PageObject {
 
-    @FindBy(xpath = "//*[@id=\"app\"]/section/div[2]/div/header/div/div[1]/div[1]/a[2]")
+    @FindBy(xpath = "//*[@id=\"app\"]/section/div[1]/div/header/div/div[1]/div[1]/a[2]")
     private WebElement menLabel;
     //Am accesat optiunea "Barbati"
     @FindBy(xpath = "//*[@id=\"onetrust-accept-btn-handler\"]")

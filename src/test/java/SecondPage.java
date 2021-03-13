@@ -4,7 +4,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class SecondPage extends PageObject{
-    @FindBy(xpath = "//*[@id=\"app\"]/section/div[2]/div/header/div/div[2]/ul/li[5]/a")
+    @FindBy(xpath = "//*[@id=\"app\"]/section/div[1]/div/header/div/div[2]/ul/li[5]/a")
     private WebElement sportsArticles;
     //Am accesat elementul de articole sport
     @FindBy(xpath = "//*[@id=\"app\"]/section/section/div[2]/div[3]/div/section[8]/div/label/div[2]/div[2]/div/input")
